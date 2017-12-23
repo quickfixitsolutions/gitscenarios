@@ -1,0 +1,74 @@
+
+Common Git Commands in Different Scenarios
+
+Here is a collection of git commands that I often use depending on the scenario.
+Scenario 1: I want to get a copy of a git repository.
+
+git clone https://some-url-repository
+
+Scenario 2: I want to see the changelog of the repository.
+
+git log
+
+Scenario 3: I want to get the latest version of a repository on its master branch. I don’t have any local commits.
+
+git fetch
+git reset --hard origin/master
+
+Warning: git reset destroys your local commits!
+Scenario 4: I want to commit my local changes.
+
+git status
+git add some-file.js
+# See my blog about Tig about alternative to git add
+git commit -m "Updated something in the file, but of course this could be more descriptive."
+
+Scenario 4a: And then I want to push my local changes to master in the remote repository.
+
+git push origin master
+
+Scenario 4b: But I get an error saying I don’t have the latest remote changes.
+
+git fetch
+git rebase origin master
+# Now up to date
+git push origin master
+
+Scenario 5: I want to create a new git repository.
+
+git init
+git add .
+git commit -m "Initial commit"
+
+Scenario 5a: And then push it to the remote repository.
+
+git remote add origin https://some-url-repository.git
+git remote -v
+git push origin master
+
+Scenario 6: I want to make a new branch.
+
+git checkout -b branch_name
+
+Scenario 7: I want to switch to another branch.
+
+git checkout branch_name
+
+Scenario 8: I want to push my new branch to the remote repository.
+
+git checkout -b branch_name
+# edit files, add files, commit...
+git push -u origin branch_name
+
+Scenario 9: What branch am I on again, and what other branches are there?
+
+git branch
+
+Scenario 10: I’ve got a commit that I want to place on top of my current head.
+
+git cherry-pick sha_of_commit
+
+Scenario 11: I forgot what I just did. What did I do again?
+
+git reflog
+
